@@ -1,0 +1,7 @@
+node_modules
+dist
+.npm-cache
+.cache
+.env
+backend/.env
+frontend/.env

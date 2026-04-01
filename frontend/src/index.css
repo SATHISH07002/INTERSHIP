@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply min-h-screen bg-slate-950 text-slate-100 antialiased;
+  background-image:
+    radial-gradient(circle at top left, rgba(16, 185, 129, 0.18), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(148, 163, 184, 0.12), transparent 24%);
+}
+
+#root {
+  @apply min-h-screen;
+}
+
+.glass-panel {
+  @apply rounded-3xl border border-slate-800/70 bg-slate-900/75 shadow-panel backdrop-blur;
+}
+
+.input-field {
+  @apply w-full rounded-2xl border border-slate-700 bg-slate-950/70 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-emerald-500;
+}
+
+.primary-button {
+  @apply rounded-2xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-emerald-500 disabled:cursor-not-allowed disabled:opacity-60;
+}
