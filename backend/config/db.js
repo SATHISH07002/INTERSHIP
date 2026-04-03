@@ -17,6 +17,9 @@ const connectDatabase = async () => {
     connectionPromise = mongoose.connect(uri).then((connection) => {
       console.log("MongoDB connected");
       return connection;
+    }).catch((error) => {
+      connectionPromise = undefined;
+      throw error;
     });
   }
 
