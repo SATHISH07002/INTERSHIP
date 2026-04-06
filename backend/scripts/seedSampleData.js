@@ -1,5 +1,7 @@
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import path from "path";
+import { fileURLToPath } from "url";
 import connectDatabase from "../config/db.js";
 import User from "../models/User.js";
 import Company from "../models/Company.js";
@@ -8,7 +10,10 @@ import JobOffer from "../models/JobOffer.js";
 import WorkLog from "../models/WorkLog.js";
 import { generateCertificateId, generateVerificationId } from "../utils/generateCertificateId.js";
 
-dotenv.config();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 const sampleEmails = [
   "admin@certitrust.demo",

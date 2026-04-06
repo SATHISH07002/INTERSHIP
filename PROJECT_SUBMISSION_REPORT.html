@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CertiTrust Project Report</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 16mm;
+    }
+    body {
+      font-family: "Times New Roman", serif;
+      font-size: 12pt;
+      line-height: 1.5;
+      color: #111;
+      max-width: 190mm;
+      margin: 0 auto;
+    }
+    h1, h2, h3 {
+      text-align: center;
+      margin: 16px 0 10px;
+      page-break-after: avoid;
+    }
+    h1 { font-size: 22pt; }
+    h2 { font-size: 17pt; }
+    h3 { font-size: 13pt; }
+    p {
+      text-align: justify;
+      margin: 8px 0;
+    }
+    ul, ol {
+      margin: 8px 0 12px 24px;
+    }
+    li {
+      margin: 4px 0;
+    }
+    code, pre {
+      font-family: Consolas, monospace;
+    }
+    pre {
+      white-space: pre-wrap;
+      border: 1px solid #bbb;
+      padding: 10px;
+      background: #f7f7f7;
+    }
+    hr {
+      border: 0;
+      border-top: 1px solid #777;
+      margin: 18px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 11pt;
+    }
+    th, td {
+      border: 1px solid #444;
+      padding: 6px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #efefef;
+    }
+  </style>
+</head>
+<body>
+<h1>PROJECT SUBMISSION REPORT</h1>
+<h2>CertiTrust</h2>
+<h3>Internship Management and Automated Certificate Verification System</h3>
+<p>Prepared by:</p>
+<ul>
+<li><code>[Student Name 1]</code></li>
+<li><code>[Student Name 2]</code></li>
+<li><code>[Student Name 3]</code></li>
+<li><code>[Student Name 4]</code></li>
+</ul>
+<p>Register Numbers:</p>
+<ul>
+<li><code>[Register No 1]</code></li>
+<li><code>[Register No 2]</code></li>
+<li><code>[Register No 3]</code></li>
+<li><code>[Register No 4]</code></li>
+</ul>
+<p>Submitted to:</p>
+<ul>
+<li><code>[Department Name]</code></li>
+<li><code>[College Name]</code></li>
+<li><code>[University Name]</code></li>
+</ul>
+<p>Guided by:</p>
+<ul>
+<li><code>[Guide Name]</code></li>
+<li><code>[Designation]</code></li>
+</ul>
+<p>Academic Year:</p>
+<ul>
+<li><code>[2025-2026]</code></li>
+</ul>
+<hr />
+<h2>Certificate</h2>
+<p>This is to certify that the project report entitled <strong>"CertiTrust: Internship Management and Automated Certificate Verification System"</strong> is a bonafide record of the work carried out by <code>[Student Name(s)]</code> under the guidance of <code>[Guide Name]</code> in partial fulfillment of the requirements for the award of the degree <code>[Degree Name]</code> in <code>[Department Name]</code> during the academic year <code>[2025-2026]</code>.</p>
+<p>Guide Signature: __________</p>
+<p>Head of Department Signature: __________</p>
+<p>Internal Examiner: __________</p>
+<p>External Examiner: __________</p>
+<hr />
+<h2>Declaration</h2>
+<p>We hereby declare that this project report titled <strong>"CertiTrust: Internship Management and Automated Certificate Verification System"</strong> is the original work carried out by us under the supervision of <code>[Guide Name]</code>. This report has not been submitted in part or full to any other university or institution for the award of any degree, diploma, or certificate.</p>
+<p>Student Signatures:</p>
+<ul>
+<li>__________</li>
+<li>__________</li>
+<li>__________</li>
+<li>__________</li>
+</ul>
+<hr />
+<h2>Acknowledgement</h2>
+<p>We express our sincere thanks to the management of <code>[College Name]</code>, the Head of the Department, our project guide <code>[Guide Name]</code>, and all faculty members for their encouragement and valuable guidance throughout the development of this project. We also thank our friends and family members for their constant support. Their suggestions and motivation helped us complete this project successfully.</p>
+<hr />
+<h2>Abstract</h2>
+<p>CertiTrust is a web-based internship management and automated certificate verification system developed using the MERN stack. The main aim of the project is to simplify the process of internship submission, multi-level approval, certificate generation, and public certificate verification. In many institutions, internship records are maintained manually through paper documents, emails, and spreadsheets. This causes delays, duplicate submissions, verification difficulties, and possible misuse of certificates.</p>
+<p>The proposed system provides role-based access for students, college authorities, company representatives, mentors, and administrators. Students can submit internship details, upload reports, maintain profile information, and resubmit records if corrections are required. Colleges and companies can independently review the submission and either approve or reject it with reasons. Once approvals are completed, the system automatically generates a PDF certificate with a unique certificate ID and QR-based public verification link. The application also supports company internship or job offer posting, student applications, supporting document upload, and work-log tracking.</p>
+<p>The project improves transparency, reduces manual effort, strengthens trust in certificate authenticity, and creates a centralized platform for internship-related academic processes.</p>
+<hr />
+<h2>Index</h2>
+<ol>
+<li>Introduction</li>
+<li>Problem Statement</li>
+<li>Objectives</li>
+<li>Existing System</li>
+<li>Proposed System</li>
+<li>Feasibility Study</li>
+<li>System Requirements</li>
+<li>System Design</li>
+<li>Database Design</li>
+<li>Module Description</li>
+<li>Implementation Details</li>
+<li>Testing</li>
+<li>Result and Discussion</li>
+<li>Conclusion</li>
+<li>Future Enhancements</li>
+<li>References</li>
+</ol>
+<hr />
+<h2>1. Introduction</h2>
+<p>Internships play a major role in helping students gain practical industry exposure. Educational institutions usually require students to submit internship details, reports, mentor information, and completion proof for academic evaluation. In many cases this workflow is handled manually. Students submit PDF reports by email or printed copies, college staff verify them manually, and final completion certificates are difficult to authenticate later.</p>
+<p>CertiTrust was developed to digitalize this entire process. It provides a centralized platform where students, colleges, and companies can interact through a secure web application. The system stores internship records, supports document upload, manages approvals, generates certificates automatically, and offers a public verification mechanism through a QR-linked page.</p>
+<p>This project combines academic administration, employer participation, and digital verification into a single platform. By doing so, it reduces paperwork, improves accuracy, and creates a reliable digital record of internship completion.</p>
+<hr />
+<h2>2. Problem Statement</h2>
+<p>The manual handling of internship records creates several problems:</p>
+<ul>
+<li>Students must submit internship data through multiple disconnected channels.</li>
+<li>Colleges and companies spend extra time reviewing and tracking reports.</li>
+<li>Duplicate or incorrect submissions are difficult to detect.</li>
+<li>There is no simple way to verify whether a certificate is genuine.</li>
+<li>Communication delays occur when approval or correction is needed.</li>
+<li>Recruitment notices and internship opportunities are not integrated with student records.</li>
+</ul>
+<p>Because of these issues, institutions need a secure and efficient digital solution for internship record management and verification.</p>
+<hr />
+<h2>3. Objectives</h2>
+<p>The main objectives of the project are:</p>
+<ul>
+<li>To build a centralized internship management platform for students, colleges, and companies.</li>
+<li>To provide secure role-based login and dashboard access.</li>
+<li>To enable internship submission with report upload and structured project details.</li>
+<li>To support college-side and company-side approval workflows.</li>
+<li>To allow rejection with remarks and student resubmission.</li>
+<li>To generate internship certificates automatically after approval.</li>
+<li>To attach QR-based verification for certificate authenticity.</li>
+<li>To support internship or job offer posting and direct student applications.</li>
+<li>To maintain work logs and supporting documents for stronger record keeping.</li>
+</ul>
+<hr />
+<h2>4. Existing System</h2>
+<p>In the existing manual process, students submit internship reports directly to faculty members or placement coordinators through printed reports, email attachments, or messaging platforms. Reviewers maintain status manually and issue completion confirmation separately. This approach has many drawbacks:</p>
+<ul>
+<li>Lack of centralized data storage</li>
+<li>Time-consuming communication between student, college, and company</li>
+<li>Difficulty in tracking approval status</li>
+<li>No direct fraud-checking or duplicate detection</li>
+<li>No automatic certificate generation</li>
+<li>No public verification mechanism for completed certificates</li>
+</ul>
+<p>Thus, the traditional system is not scalable or efficient for modern academic workflows.</p>
+<hr />
+<h2>5. Proposed System</h2>
+<p>The proposed system, CertiTrust, is a full-stack web application that streamlines internship data management and certificate verification. The application has multiple user roles:</p>
+<ul>
+<li><code>Student</code></li>
+<li><code>College</code></li>
+<li><code>Company</code></li>
+<li><code>Mentor</code></li>
+<li><code>Admin</code></li>
+</ul>
+<h3>Core workflow</h3>
+<ol>
+<li>A student registers and completes profile details.</li>
+<li>The student creates an internship record and uploads the internship report.</li>
+<li>The system maps the related company and college approver.</li>
+<li>College and company users review the record independently.</li>
+<li>If rejected, the student edits and resubmits the record.</li>
+<li>When approved, the system generates a PDF certificate automatically.</li>
+<li>A QR code and unique verification ID allow public certificate validation.</li>
+</ol>
+<h3>Additional features</h3>
+<ul>
+<li>Internship and job offer publishing</li>
+<li>Direct application by students</li>
+<li>Supporting document upload</li>
+<li>Daily or periodic work-log tracking</li>
+<li>Email notifications for submission and approval updates</li>
+<li>Fraud flagging based on duplicate submission and domain mismatch checks</li>
+</ul>
+<hr />
+<h2>6. Feasibility Study</h2>
+<h3>6.1 Technical Feasibility</h3>
+<p>The project is technically feasible because it uses widely adopted web technologies such as React, Node.js, Express.js, and MongoDB. PDF generation, email notifications, QR generation, and cloud file storage are implemented through stable libraries and services.</p>
+<h3>6.2 Economic Feasibility</h3>
+<p>The system can be developed and deployed at low cost. The software stack is open source, and deployment can be performed on low-cost or free-tier cloud platforms for academic usage.</p>
+<h3>6.3 Operational Feasibility</h3>
+<p>The application is simple to use because each user role is given a dedicated dashboard and only relevant operations are displayed. This makes the system suitable for students, faculty members, and company representatives with minimal training.</p>
+<h3>6.4 Schedule Feasibility</h3>
+<p>The project is practical within a mini-project or final-year project timeline because the modules can be developed incrementally: authentication, internship management, approvals, certificate generation, and verification.</p>
+<hr />
+<h2>7. System Requirements</h2>
+<h3>7.1 Hardware Requirements</h3>
+<ul>
+<li>Processor: Intel Core i3 or above</li>
+<li>RAM: 4 GB minimum, 8 GB recommended</li>
+<li>Storage: 10 GB free space</li>
+<li>Internet connection for cloud storage and deployment</li>
+</ul>
+<h3>7.2 Software Requirements</h3>
+<ul>
+<li>Operating System: Windows, Linux, or macOS</li>
+<li>Frontend: React.js, Vite, Tailwind CSS</li>
+<li>Backend: Node.js, Express.js</li>
+<li>Database: MongoDB</li>
+<li>APIs and Libraries: Axios, JWT, Multer, Nodemailer, PDFKit, QRCode, Cloudinary</li>
+<li>Browser: Google Chrome, Microsoft Edge, or equivalent</li>
+</ul>
+<hr />
+<h2>8. System Design</h2>
+<h3>8.1 Architecture</h3>
+<p>CertiTrust follows a client-server architecture.</p>
+<ul>
+<li>The frontend is built with React and handles the user interface, routing, forms, and dashboard screens.</li>
+<li>The backend is built with Express.js and provides REST APIs for authentication, internship management, approvals, offers, certificates, documents, and work logs.</li>
+<li>MongoDB stores users, internships, companies, offers, work logs, and uploaded document metadata.</li>
+<li>Cloudinary stores uploaded reports, supporting files, and generated certificate PDFs.</li>
+<li>Nodemailer handles email notifications.</li>
+</ul>
+<h3>8.2 High-Level Architecture Flow</h3>
+<pre>
+User -&gt; React Frontend -&gt; Express API -&gt; MongoDB
+                           |            |
+                           |            -&gt; Internship / User / Company / Offer data
+                           |
+                           -&gt; Cloudinary for file storage
+                           -&gt; PDFKit for certificate generation
+                           -&gt; QR generator for verification code
+                           -&gt; Nodemailer for status notifications
+</pre>
+<h3>8.3 Functional Flow</h3>
+<pre>
+Student Login
+   -&gt; Profile Completion
+   -&gt; Internship Submission
+   -&gt; Report Upload
+   -&gt; College Approval
+   -&gt; Company Approval
+   -&gt; Admin Review (if used)
+   -&gt; Certificate Generation
+   -&gt; Public Verification
+</pre>
+<hr />
+<h2>9. Database Design</h2>
+<p>The project uses MongoDB collections. The important collections are listed below.</p>
+<h3>9.1 User Collection</h3>
+<p>Stores user account and profile information.</p>
+<p>Important fields:</p>
+<ul>
+<li><code>fullName</code></li>
+<li><code>email</code></li>
+<li><code>password</code></li>
+<li><code>role</code></li>
+<li><code>rollNo</code></li>
+<li><code>registerNo</code></li>
+<li><code>degree</code></li>
+<li><code>branch</code></li>
+<li><code>department</code></li>
+<li><code>collegeName</code></li>
+<li><code>companyName</code></li>
+<li><code>phone</code></li>
+<li><code>skills</code></li>
+<li><code>profileImage</code></li>
+</ul>
+<h3>9.2 Company Collection</h3>
+<p>Stores company profile details.</p>
+<p>Important fields:</p>
+<ul>
+<li><code>owner</code></li>
+<li><code>name</code></li>
+<li><code>logo</code></li>
+<li><code>website</code></li>
+<li><code>description</code></li>
+<li><code>contactEmail</code></li>
+<li><code>officialDomains</code></li>
+<li><code>verificationEmail</code></li>
+</ul>
+<h3>9.3 Internship Collection</h3>
+<p>This is the main collection of the system.</p>
+<p>Important fields:</p>
+<ul>
+<li><code>student</code></li>
+<li><code>college</code></li>
+<li><code>companyUser</code></li>
+<li><code>company</code></li>
+<li><code>role</code></li>
+<li><code>duration</code></li>
+<li><code>stipend</code></li>
+<li><code>internshipMode</code></li>
+<li><code>startDate</code></li>
+<li><code>endDate</code></li>
+<li><code>mentorName</code></li>
+<li><code>mentorEmail</code></li>
+<li><code>projectTitle</code></li>
+<li><code>projectDomain</code></li>
+<li><code>responsibilities</code></li>
+<li><code>learningGoals</code></li>
+<li><code>techStack</code></li>
+<li><code>rawReport</code></li>
+<li><code>status</code></li>
+<li><code>verificationId</code></li>
+<li><code>collegeApproval</code></li>
+<li><code>companyApproval</code></li>
+<li><code>adminReview</code></li>
+<li><code>fraudFlags</code></li>
+<li><code>certificate</code></li>
+</ul>
+<h3>9.4 JobOffer Collection</h3>
+<p>Stores internship or job postings from companies.</p>
+<p>Important fields:</p>
+<ul>
+<li><code>company</code></li>
+<li><code>postedBy</code></li>
+<li><code>title</code></li>
+<li><code>type</code></li>
+<li><code>location</code></li>
+<li><code>stipend</code></li>
+<li><code>applicationStartDate</code></li>
+<li><code>applicationEndDate</code></li>
+<li><code>isClosed</code></li>
+<li><code>applications</code></li>
+</ul>
+<h3>9.5 WorkLog Collection</h3>
+<p>Stores periodic work updates from students.</p>
+<p>Important fields:</p>
+<ul>
+<li><code>internship</code></li>
+<li><code>student</code></li>
+<li><code>date</code></li>
+<li><code>hoursWorked</code></li>
+<li><code>tasks</code></li>
+<li><code>proofUrl</code></li>
+<li><code>reviewStatus</code></li>
+<li><code>mentorRemarks</code></li>
+</ul>
+<h3>9.6 Document Collection</h3>
+<p>Stores supporting documents related to an internship.</p>
+<p>Important fields:</p>
+<ul>
+<li><code>internship</code></li>
+<li><code>type</code></li>
+<li><code>fileName</code></li>
+<li><code>fileUrl</code></li>
+<li><code>uploadedBy</code></li>
+<li><code>scanStatus</code></li>
+</ul>
+<hr />
+<h2>10. Module Description</h2>
+<h3>10.1 Authentication Module</h3>
+<p>This module allows users to register, log in, maintain sessions, and access protected routes based on role. JWT tokens are used for secure authentication.</p>
+<h3>10.2 Student Profile Module</h3>
+<p>Students can update academic details, contact details, technical skills, and profile information. This improves the quality of records used during internship and offer workflows.</p>
+<h3>10.3 Internship Submission Module</h3>
+<p>Students can create an internship record, upload the report, select the company, enter mentor details, add project information, and submit the form. Draft saving and resubmission are supported.</p>
+<h3>10.4 Approval Module</h3>
+<p>College and company users can review pending internship records and either approve or reject them. If rejected, the reason is stored and shown for student correction.</p>
+<h3>10.5 Certificate Generation Module</h3>
+<p>Once an internship is approved, the system generates a certificate PDF using PDFKit. Each certificate contains:</p>
+<ul>
+<li>Student details</li>
+<li>Internship role</li>
+<li>Company name</li>
+<li>Certificate ID</li>
+<li>Generated date</li>
+<li>QR code</li>
+<li>Verification URL</li>
+</ul>
+<h3>10.6 Verification Module</h3>
+<p>The public verification page shows certificate details when a valid verification ID is entered or scanned. This ensures easy authenticity checking by third parties.</p>
+<h3>10.7 Offer Management Module</h3>
+<p>Companies can publish internship or job offers with application dates. Students can browse open offers and apply directly from the system.</p>
+<h3>10.8 Work Log Module</h3>
+<p>Students can record work done during the internship, upload proof, and receive review remarks from mentors or reviewers.</p>
+<h3>10.9 Document Management Module</h3>
+<p>Users can upload offer letters, completion certificates, supporting documents, and proof files for a given internship.</p>
+<h3>10.10 Notification Module</h3>
+<p>Email notifications are used to inform companies and students regarding submissions, approvals, and offer publications.</p>
+<hr />
+<h2>11. Implementation Details</h2>
+<h3>11.1 Frontend</h3>
+<p>The frontend was developed using React with Vite. React Router is used for navigation. Separate pages are created for login, registration, dashboard, profile, internship management, offer management, admin review, and certificate verification.</p>
+<p>Major frontend pages include:</p>
+<ul>
+<li>Dashboard page for operational overview</li>
+<li>Internship page for submission, editing, and approval actions</li>
+<li>Offers page for publishing and applying to notices</li>
+<li>Verification page for public certificate validation</li>
+<li>Profile page for student information updates</li>
+</ul>
+<h3>11.2 Backend</h3>
+<p>The backend exposes REST APIs for:</p>
+<ul>
+<li>Authentication</li>
+<li>Company management</li>
+<li>Internship submission and status update</li>
+<li>Certificate verification</li>
+<li>Offer creation and application</li>
+<li>Admin decisions</li>
+<li>Work logs</li>
+<li>Supporting documents</li>
+</ul>
+<p>The backend uses middleware for authentication, role authorization, error handling, and file upload processing.</p>
+<h3>11.3 Storage and Uploads</h3>
+<p>Uploaded reports and generated certificates are stored through Cloudinary. If Cloudinary is not configured, the project supports a local data URL fallback for some file handling scenarios.</p>
+<h3>11.4 Security Features</h3>
+<p>The project includes:</p>
+<ul>
+<li>Password hashing using <code>bcryptjs</code></li>
+<li>JWT-based protected authentication</li>
+<li>Role-based route restrictions</li>
+<li>Duplicate internship detection</li>
+<li>Company domain mismatch flagging</li>
+<li>Controlled access to approval and admin operations</li>
+</ul>
+<h3>11.5 Certificate Workflow</h3>
+<p>The certificate workflow is one of the main contributions of the project:</p>
+<ol>
+<li>Student submits internship details and report.</li>
+<li>College and company approvals are recorded.</li>
+<li>The system generates a unique certificate ID.</li>
+<li>A public verification ID and QR code are created.</li>
+<li>The PDF certificate is generated and uploaded.</li>
+<li>The verification page displays authenticity details using the stored ID.</li>
+</ol>
+<hr />
+<h2>12. Testing</h2>
+<p>The following testing activities were carried out during development.</p>
+<h3>12.1 Functional Testing</h3>
+<ul>
+<li>User registration and login tested for different roles</li>
+<li>Internship submission tested with valid and invalid inputs</li>
+<li>Report upload tested for required file enforcement</li>
+<li>Approval and rejection workflow tested for college and company users</li>
+<li>Certificate generation tested after successful approval</li>
+<li>Public verification page tested with valid and invalid IDs</li>
+<li>Offer publishing and student application flow tested</li>
+</ul>
+<h3>12.2 Validation Testing</h3>
+<ul>
+<li>Mandatory fields checked during final submission</li>
+<li>End date validation checked against start date</li>
+<li>Rejection reason enforced for rejected approvals</li>
+<li>Duplicate internship submissions blocked</li>
+<li>Offer application periods validated using start and end dates</li>
+</ul>
+<h3>12.3 Security Testing</h3>
+<ul>
+<li>Protected routes restricted to authenticated users</li>
+<li>Role-based authorization verified</li>
+<li>Unauthorized status updates blocked</li>
+<li>Student edit access blocked for approved records</li>
+</ul>
+<h3>12.4 Sample Test Cases</h3>
+<table>
+<tr><th>Test Case</th><th>Input</th><th>Expected Result</th><th>Status</th></tr>
+<tr><td>Student login</td><td>Valid email and password</td><td>Login success and dashboard shown</td><td>Pass</td></tr>
+<tr><td>Internship submission</td><td>Missing required fields</td><td>Validation error shown</td><td>Pass</td></tr>
+<tr><td>Internship approval</td><td>College/company approves</td><td>Status updated correctly</td><td>Pass</td></tr>
+<tr><td>Certificate verification</td><td>Valid verification ID</td><td>Certificate details displayed</td><td>Pass</td></tr>
+<tr><td>Offer application</td><td>Expired offer</td><td>Application blocked</td><td>Pass</td></tr>
+</table>
+<hr />
+<h2>13. Result and Discussion</h2>
+<p>The developed system successfully digitalizes the internship management workflow. The application allows structured submission, transparent approval tracking, automated certificate generation, and public certificate verification. Compared with a manual process, the system improves speed, accuracy, and traceability.</p>
+<p>The student role benefits from easier submission and resubmission. College and company reviewers benefit from a clear pending-approval list and structured internship details. The automated certificate process reduces administrative workload. The verification page increases trust because the authenticity of the certificate can be checked instantly.</p>
+<p>The system also goes beyond a basic submission portal by adding offer publishing, student applications, work logs, document uploads, and fraud indicators. These additions make the platform more practical for real academic and industry collaboration.</p>
+<hr />
+<h2>14. Conclusion</h2>
+<p>CertiTrust is a useful and practical web application for managing internship records and certificate verification in an educational environment. The project solves important limitations of manual internship processing by providing a centralized digital platform with secure authentication, multi-level approval, automatic PDF certificate generation, and QR-based verification.</p>
+<p>The final outcome demonstrates how modern web technologies can be applied to improve academic workflows, reduce manual effort, and increase trust in official internship documents. The project meets its intended objectives and can serve as a strong foundation for deployment in colleges or training institutions.</p>
+<hr />
+<h2>15. Future Enhancements</h2>
+<p>The project can be extended further with the following improvements:</p>
+<ul>
+<li>OTP or email-based mentor verification before final approval</li>
+<li>AI-assisted fraud detection for uploaded reports</li>
+<li>Plagiarism detection for internship reports</li>
+<li>Analytics dashboard for department-level monitoring</li>
+<li>Export of reports in Excel or institution-specific formats</li>
+<li>Mobile application support</li>
+<li>Multi-college SaaS deployment</li>
+<li>Integration with university ERP systems</li>
+<li>Digital signatures on certificates</li>
+<li>Audit logs for every major action</li>
+</ul>
+<hr />
+<h2>16. References</h2>
+<ol>
+<li>React Documentation, https://react.dev/</li>
+<li>Node.js Documentation, https://nodejs.org/</li>
+<li>Express.js Documentation, https://expressjs.com/</li>
+<li>MongoDB Documentation, https://www.mongodb.com/docs/</li>
+<li>Mongoose Documentation, https://mongoosejs.com/docs/</li>
+<li>PDFKit Documentation, https://pdfkit.org/</li>
+<li>Nodemailer Documentation, https://nodemailer.com/</li>
+<li>Cloudinary Documentation, https://cloudinary.com/documentation</li>
+<li>QRCode Library Documentation, https://github.com/soldair/node-qrcode</li>
+</ol>
+<hr />
+<h2>Appendix A: Screenshots To Add Before Submission</h2>
+<p>Add the following screenshots from the project before final PDF submission:</p>
+<ul>
+<li>Login page</li>
+<li>Registration page</li>
+<li>Student dashboard</li>
+<li>Internship submission form</li>
+<li>Pending approval page</li>
+<li>Offer posting page</li>
+<li>Student offer application page</li>
+<li>Generated certificate PDF</li>
+<li>Public verification page</li>
+</ul>
+<hr />
+<h2>Appendix B: Notes For Final Editing</h2>
+<p>Before submitting this report, replace all placeholders:</p>
+<ul>
+<li><code>[Student Name]</code></li>
+<li><code>[Register No]</code></li>
+<li><code>[College Name]</code></li>
+<li><code>[Department Name]</code></li>
+<li><code>[Guide Name]</code></li>
+<li><code>[Academic Year]</code></li>
+</ul>
+<p>You can also format this document in Word with:</p>
+<ul>
+<li>Title page</li>
+<li>Roman page numbers for preliminaries</li>
+<li>Chapter headings in bold</li>
+<li>Justified paragraph alignment</li>
+<li>Institution logo on the cover page</li>
+</ul>
+
+</body>
+</html>

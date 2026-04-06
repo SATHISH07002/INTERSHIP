@@ -5,7 +5,7 @@ import { allowRoles } from "../middleware/roleMiddleware.js";
 
 const router = express.Router();
 
-router.get("/", getOffers);
+router.get("/", protect, allowRoles("student", "college", "company", "admin"), getOffers);
 router.post("/", protect, allowRoles("company"), createOffer);
 router.put("/:id/close", protect, allowRoles("company"), closeOffer);
 router.post("/:id/apply", protect, allowRoles("student"), applyToOffer);

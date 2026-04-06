@@ -2,31 +2,6 @@ import { createContext, useContext, useEffect, useState } from "react";
 import api from "../lib/axios.js";
 
 const AuthContext = createContext(null);
-const KNOWN_ACCOUNTS_KEY = "certitrust-known-accounts";
-
-const readKnownAccounts = () => {
-  try {
-    const raw = localStorage.getItem(KNOWN_ACCOUNTS_KEY);
-    const parsed = raw ? JSON.parse(raw) : [];
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    return [];
-  }
-};
-
-const rememberAccount = (user) => {
-  if (!user?.email) return;
-
-  const nextAccount = {
-    email: user.email,
-    fullName: user.fullName || "",
-    role: user.role || "",
-    lastUsedAt: new Date().toISOString()
-  };
-
-  const deduped = readKnownAccounts().filter((account) => account.email !== user.email);
-  localStorage.setItem(KNOWN_ACCOUNTS_KEY, JSON.stringify([nextAccount, ...deduped].slice(0, 8)));
-};
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -54,7 +29,6 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("certitrust-token", payload.token);
     setUser(payload.user);
     setCompany(payload.company || null);
-    rememberAccount(payload.user);
   };
 
   const login = async (credentials) => {

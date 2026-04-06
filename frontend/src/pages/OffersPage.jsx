@@ -129,6 +129,8 @@ const OffersPage = () => {
     setSelectedApplicant(null);
   };
 
+  const isOfferOwner = (offer) => user?.role === "company" && offer.postedBy?._id === user?._id;
+
   return (
     <div className="h-full overflow-y-auto p-6 md:p-8">
       <div className="grid gap-6 xl:grid-cols-[0.9fr_1.1fr]">
@@ -240,7 +242,7 @@ const OffersPage = () => {
                           ? "Not Open Yet"
                           : "Apply"}
                     </button>
-                  ) : (
+                  ) : isOfferOwner(offer) ? (
                     <div className="flex flex-wrap gap-3">
                       <button
                         className="rounded-2xl border border-slate-700 px-4 py-3 text-sm text-slate-300 transition hover:border-emerald-500 hover:text-white"
@@ -263,9 +265,14 @@ const OffersPage = () => {
                         </span>
                       )}
                     </div>
-                  )}
+                  ) : null}
+                  {user?.role === "college" ? (
+                    <span className="rounded-2xl border border-slate-700 px-4 py-3 text-sm text-slate-300">
+                      Visible to students and college
+                    </span>
+                  ) : null}
                 </div>
-                {user?.role === "company" && expandedOfferId === offer._id ? (
+                {isOfferOwner(offer) && expandedOfferId === offer._id ? (
                   <div className="mt-5 border-t border-slate-800 pt-5">
                     <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">Candidates</h3>
                     <div className="mt-4 space-y-3">

@@ -82,8 +82,15 @@ export const createOffer = asyncHandler(async (req, res) => {
   }
 });
 
-export const getOffers = asyncHandler(async (_req, res) => {
-  const offers = await JobOffer.find()
+export const getOffers = asyncHandler(async (req, res) => {
+  let query = {};
+
+  if (req.user?.role === "company") {
+    const company = await Company.findOne({ owner: req.user._id }).select("_id");
+    query = company ? { company: company._id } : { _id: null };
+  }
+
+  const offers = await JobOffer.find(query)
     .populate("company", "name logo")
     .populate("postedBy", "fullName email")
     .populate("applications.student", "fullName email rollNo registerNo department degree branch collegeName phone")
